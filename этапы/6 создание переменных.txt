@@ -1,0 +1,76 @@
+<-- js -->
+const box = 50; //размер одного блока
+
+
+//границы, за которые змейка заползать не может
+const bounds = {
+    x: {
+        min: 1,
+        max: 12,
+    },
+    y: {
+        min: 1,
+        max: 10,
+    },
+};
+
+/**
+ * Получить рандомное целое число в диапозоне от min до max
+ * @param min
+ * @param max
+ * @returns {number}
+ */
+function randomInteger(min, max) {
+    let rand = min - 0.5 + Math.random() * (max - min + 1);
+    return Math.round(rand);
+}
+
+//координаты еды
+const food = {
+    x: randomInteger(bounds.x.min, bounds.x.max),
+    y: randomInteger(bounds.y.min, bounds.y.max),
+};
+
+const appleImage = new Image();
+appleImage.src = "img/apple.png"; //еда
+
+//информация о текущей игре
+const game = {
+    isStart: false,
+    bestScore: 0,
+    score: 0,
+};
+
+let snake;//информация о змейке
+
+let move_interval;//отвечает за движение змейки и детект коллизий
+
+//устанавливает новое значение счета
+function setScore(score) {
+    game.score = score;
+    game.bestScore = Math.max(game.score, game.bestScore);
+    document.getElementById('score').innerText = game.score;
+    document.getElementById('bestScore').innerText = game.bestScore;
+}
+
+/**
+ * Установка значений по-умолчанию
+ */
+function setDefaults() {
+    snake = {
+        x: 2,
+        y: 5,
+        direction: 'right',
+        switch_dir: false,
+        body: [
+            {
+                x: 2,
+                y: 5,
+            },
+        ]
+    };
+
+    game.isStart = false;
+    setScore(0);
+}
+setDefaults();

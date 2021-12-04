@@ -1,0 +1,42 @@
+<-- js -->
+
+/**
+ * Отследить коллизии
+ * @param x
+ * @param y
+ * @returns {boolean}
+ */
+function checkBorders(x, y) {
+    let res = false;
+    snake.body.forEach((coords) => {
+        if (coords.x === x && coords.y === y) {
+            res = true;
+            return null;
+        }
+    });
+
+
+    if (x > bounds.x.max || x < bounds.x.min || y > bounds.y.max || y < bounds.y.min) {
+        res = true;
+    }
+
+    return res;
+}
+
+
+/**
+ * Завершение игры
+ */
+function stopGame() {
+    game.isStart = false;
+    document.getElementById("menu").style.display = 'flex';
+    clearInterval(move_interval);
+}
+
+
+
+//вставить на место "//место для проверки коллизий"
+if (checkBorders(newHead.x, newHead.y)) {//детект коллизий
+    stopGame();//если детект, то игра окончена
+    return;
+}

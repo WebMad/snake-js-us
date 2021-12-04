@@ -1,0 +1,13 @@
+<-- html -->
+<script src="js/script.js"></script>
+
+<-- js -->
+//получение объекта canvas
+const canvas = document.getElementById('game');
+
+//устанавливаем размеры холста
+canvas.width = 700;
+canvas.height = 600;
+
+//получения контекста для canvas
+const ctx = canvas.getContext('2d');

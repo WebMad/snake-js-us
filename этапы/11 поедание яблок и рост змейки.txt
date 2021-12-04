@@ -1,0 +1,25 @@
+<-- js -->
+/**
+ * Смена позиции еды (после того, как змейка съела яблоко)
+ */
+function switchFoodCoords() {
+    let x;
+    let y;
+    do {
+        x = randomInteger(bounds.x.min, bounds.x.max);
+        y = randomInteger(bounds.y.min, bounds.y.max);
+    } while (checkBorders(x, y));
+
+    food.x = x;
+    food.y = y;
+}
+
+//вставить на место "//место для вставки логики поедания яблок"
+if (newHead.x === food.x && newHead.y === food.y) {//детект соприкосновения с едой
+    switchFoodCoords();//смена координат еды
+    setScore(game.score + 1);//новое значение счетчика
+} else {
+    snake.body.pop();//удаление конца змейки
+}
+
+snake.body.unshift(newHead);//добавление нового элемента змейки в начало

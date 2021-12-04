@@ -1,0 +1,37 @@
+<-- html -->
+<section id="content">
+    <div id="menu">
+        <img id="start" src="img/play.png">
+    </div>
+    <canvas id="game"></canvas>
+</section>
+
+<-- css -->
+#menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 700px;
+    height: 600px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+}
+
+#start {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+#start:hover {
+    width: 80px;
+    height: 80px;
+}
+
+canvas {
+    width: 700px;
+    height: 600px;
+    border-radius: 20px;
+}

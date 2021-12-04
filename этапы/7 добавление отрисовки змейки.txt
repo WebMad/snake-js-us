@@ -1,0 +1,19 @@
+<-- js -->
+let color = "#ffa2aa";
+snake.body.forEach((coords, i) => {
+    if (i === 0) {//условие для отрисовки головы
+        color = "#ffa2aa";
+    } else if (i % 3 === 0 || i === 1) {//условие для разных цветов тела змейки
+        color = color === "#d33333" ? "#f8e8ec" : "#d33333";
+    }
+
+    ctx.fillStyle = color;//устанавливаем цвет кисти для рисования
+    //отрисовываем квадрат (элемент змейки)
+    ctx.fillRect(box * coords.x + 2, box * coords.y + 2, 46, 46);
+})
+
+ctx.drawImage(appleImage, food.x * box, food.y * box, box, box);//рисуем яблоко
+
+if (game.isStart) {//прежде чем переходить к следующему кадру
+    //место для вызова следующего кадра
+}

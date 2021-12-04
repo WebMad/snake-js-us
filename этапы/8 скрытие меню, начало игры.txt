@@ -1,0 +1,48 @@
+/** обработка событий */
+document.addEventListener('keydown', (e) => {//нажатие на клавишу, направление движения
+    if (!snake.switch_dir) {
+        if (e.key === 'ArrowLeft' && snake.direction !== 'right')
+            snake.direction = 'left'
+        else if (e.key === 'ArrowUp' && snake.direction !== 'down')
+            snake.direction = 'up'
+        else if (e.key === 'ArrowRight' && snake.direction !== 'left')
+            snake.direction = 'right'
+        else if (e.key === 'ArrowDown' && snake.direction !== 'up')
+            snake.direction = 'down';
+
+        if (!game.isStart && ['ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown'].indexOf(e.key) !== -1) {
+            startGame()
+        }
+
+    }
+    snake.switch_dir = true;
+});
+
+document.getElementById('start').onclick = () => {//событие нажатия на кнопку play
+    if (!game.isStart) {
+        startGame()
+    }
+}
+
+document.addEventListener('keydown', (e) => {//событие нажатия на одну из клавиш для начала игры
+    if (["Escape", " ", "Enter"].indexOf(e.key) !== -1) {
+        if (!game.isStart) {
+            startGame()
+        }
+    }
+});
+
+/**
+ * Начало игры
+ */
+function startGame() {
+    document.getElementById("menu").style.display = 'none';//скрытие popup меню
+    // document.getElementById('score').innerText = game.score;//установка
+
+    setDefaults();//устанавливаем атрибуты игры в изначальное состояние
+    game.isStart = true;
+
+    //место для вставки кода начала движения
+
+    drawGame();//запускаем отрисовку игры
+}

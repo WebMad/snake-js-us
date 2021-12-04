@@ -1,0 +1,20 @@
+<-- js -->
+//загружаем картинки
+const background = new Image();
+background.src = "img/background.png"; //фон
+
+
+/**
+ * Отрисовывает игру кадр за кадром
+ */
+function drawGame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);//удаляет предыдущий кадр с холста
+    ctx.drawImage(background, 0, 0);//отрисовывает фон игры (сетку, по которой движется змейка)
+
+    requestAnimationFrame(drawGame);//вызывает отрисовку следующего кадра (fps 60)
+}
+
+//после загрузки фона в память, запускаем отрисовку первого кадра
+background.onload = () => {
+    drawGame();
+}
