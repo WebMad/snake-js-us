@@ -14,3 +14,16 @@ body {
     background: #6ea320;
     background: url("./../img/main-bg.jpg");
 }
+
+header {
+    display: flex;
+    justify-content: space-between;
+    width: 700px;
+    font-size: 40px;
+    color: #f8e8ec;
+}
+
+.score, .bestScore {
+    display: flex;
+    align-items: center;
+}
